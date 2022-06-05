@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+{%block content%}
+<head>
+<title>Select the family and file</title>
+</head>
+<script>
+function f1() 
+{
+	var a=document.getElementById("fam2");
+	a.style.display="none";
+    	var T = document.getElementById("fam1");
+    	T.style.display = "block";  
+}
+function f2() 
+{
+	var a = document.getElementById("fam1");
+    	a.style.display = "none"; 
+        var T = document.getElementById("fam2");
+    	T.style.display = "block";  
+}
+function OnSubmitForm(){
+   	document.myform.action="http://localhost:5000/data/fam1/"; 
+	return true;
+}
+function OnSubmitForm1()
+{
+  	document.myform1.action="http://localhost:5000/data/fam2/"; 
+	return true;
+}
+</script>
+
+<body>
+<h3>Choose Family</h3>
+<input type="radio" onclick="f1()" name="family" value="Family-1"> Family-1<br>
+<input type="radio" onclick="f2()" name="family" value="Family-2"> Family-2<br><br> 
+</body>
+
+<div id="fam1" style="display:none">
+<form name="myform" onsubmit="OnSubmitForm()" method="POST">
+<h3>Select Files from Family-1</h3>
+<input type="radio" name="data" value="Data-A"> Data-A<br>
+<input type="radio" name="data" value="Data-B"> Data-B <br>
+<input type="radio" name="data" value="Data-C"> Data-C <br>
+<input type="submit" value="Submit">
+</form>
+</div>
+
+<div id="fam2" style="display:none">
+<form name="myform1" onsubmit="OnSubmitForm1()" method="POST">
+<h3>Select Files from Family-2</h3>
+<input type="radio" name="data" value="Data-A"> Data-A<br>
+<input type="radio" name="data" value="Data-B"> Data-B <br>
+<input type="radio" name="data" value="Data-C"> Data-C <br>
+<input type="submit" value="Submit">
+</form>
+</div>
+
+{%endblock%}
